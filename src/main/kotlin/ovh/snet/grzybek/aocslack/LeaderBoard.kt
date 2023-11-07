@@ -24,7 +24,7 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
         return newStars
     }
 
-    fun addStars(newMember: Member): List<Star> {
+    private fun addStars(newMember: Member): List<Star> {
         val newStars = mutableListOf<Star>()
         newMember.completionDayLevel.forEach { (day, starsMap) ->
             starsMap.forEach { (star, _) ->
@@ -34,7 +34,7 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
         return newStars
     }
 
-    fun addStars(newMember: Member, oldMember: Member): List<Star> {
+    private fun addStars(newMember: Member, oldMember: Member): List<Star> {
         val newStars = mutableListOf<Star>()
         newMember.completionDayLevel.forEach { (day, starsMap) ->
             starsMap.forEach { (star, _) ->
@@ -58,13 +58,9 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
         val completionDayLevel: Map<String, Map<String, Level>> = mapOf()
     ) {
 
-        data class Level(val getStarTs: Long, val starIndex: Long) {
-
-        }
+        data class Level(val getStarTs: Long, val starIndex: Long)
     }
 
-    data class Star(val member: String, val day: Int, val star: Int) {
-
-    }
+    data class Star(val member: String, val day: Int, val star: Int)
 }
 
