@@ -32,9 +32,14 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
         return newStars
     }
 
+    fun getSortedMembersByLocalScore(): List<Member> {
+        return members.values.sortedByDescending { it.localScore }
+    }
+
     data class Member(
         val name: String,
         val stars: Int,
+        @JsonProperty("local_score")
         val localScore: Int,
         val globalScore: Int,
         @JsonProperty("last_star_ts")
@@ -42,6 +47,10 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
         @JsonProperty("completion_day_level")
         val completionDayLevel: Map<String, Map<String, Level>> = mapOf()
     ) {
+        fun getMessage(place: Int): String {
+            return "${place}) *${name}* ${localScore}\n"
+        }
+
 
         data class Level(val getStarTs: Long, val starIndex: Long)
     }
