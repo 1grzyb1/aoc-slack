@@ -46,19 +46,12 @@ class LeaderBoardTest {
     }
 
     @Test
-    fun shouldReturnStarWhenUserDidntExist() {
+    fun shouldNotReturnStarWhenUserDidntExist() {
         val prevLeaderBoard = createLeaderBoard(mapOf())
         val newLeaderBoard =
             createLeaderBoardWithLevels(mapOf("1" to mapOf("1" to createLevel(), "2" to createLevel())))
         val stars = prevLeaderBoard.findNewStars(newLeaderBoard)
-        assertThat(stars).hasSize(2)
-        assertThat(stars[0].member).isEqualTo("Grzybek")
-        assertThat(stars[0].day).isEqualTo(1)
-        assertThat(stars[0].star).isEqualTo(1)
-
-        assertThat(stars[1].member).isEqualTo("Grzybek")
-        assertThat(stars[1].day).isEqualTo(1)
-        assertThat(stars[1].star).isEqualTo(2)
+        assertThat(stars).hasSize(0)
     }
 
     fun createLeaderBoardWithLevels(completionDayLevel: Map<String, Map<String, LeaderBoard.Member.Level>>): LeaderBoard {

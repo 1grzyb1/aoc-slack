@@ -12,25 +12,10 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
         val newStars = mutableListOf<Star>()
 
         for ((memberId, newMember) in newLeaderBoard.members) {
-            val oldMember = this.members[memberId]
-            if (oldMember == null) {
-                newStars.addAll(addStars(newMember))
-                continue
-            }
-
+            val oldMember = this.members[memberId] ?: continue
             newStars.addAll(addStars(newMember, oldMember))
         }
 
-        return newStars
-    }
-
-    private fun addStars(newMember: Member): List<Star> {
-        val newStars = mutableListOf<Star>()
-        newMember.completionDayLevel.forEach { (day, starsMap) ->
-            starsMap.forEach { (star, _) ->
-                newStars.add(Star(newMember.name, day.toInt(), star.toInt()))
-            }
-        }
         return newStars
     }
 
@@ -61,6 +46,10 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
         data class Level(val getStarTs: Long, val starIndex: Long)
     }
 
-    data class Star(val member: String, val day: Int, val star: Int)
+    data class Star(val member: String, val day: Int, val star: Int) {
+        fun getMessage(): String {
+            return "*${member}* received ${":star:".repeat(star)} for solving ${day} challenge :tada:\n"
+        }
+    }
 }
 
