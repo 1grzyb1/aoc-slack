@@ -12,6 +12,7 @@ class ReceivedStarsService(
 ) {
 
     private var leaderBoard: LeaderBoard = leaderboardClient.getLeaderBoard()
+    private val slack: Slack = Slack.getInstance()
 
     @Scheduled(cron = "\${aoc.slack.stars.cron:0 0/15 * * * ?}")
 
@@ -22,7 +23,6 @@ class ReceivedStarsService(
     }
 
     fun notifySlack(stars: List<LeaderBoard.Star>) {
-        val slack: Slack = Slack.getInstance()
         val text = stars.joinToString("\n") { it.getMessage() }
         val payload = "{\"text\":\"${text}\"}"
         slack.send(webhookUrl, payload)
