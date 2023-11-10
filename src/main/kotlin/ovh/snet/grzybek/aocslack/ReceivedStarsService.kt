@@ -11,9 +11,7 @@ class ReceivedStarsService(
 
     private var leaderBoard: LeaderBoard = leaderboardClient.getLeaderBoard()
 
-
     @Scheduled(cron = "\${aoc.slack.stars.cron:0 0/15 * * * ?}")
-
     fun notifyReceivedStarts() {
         val newLeaderBoard = leaderboardClient.getLeaderBoard()
         val newStars = leaderBoard.findNewStars(newLeaderBoard)
