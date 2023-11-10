@@ -18,6 +18,7 @@ class LeaderboardClient(
     fun getLeaderBoard(): LeaderBoard {
         val client = WebClient.builder()
             .defaultHeader("Cookie", "session=${session}")
+            .defaultHeader("User-Agent", "AOC-Slack-Integration (wikt.keska@gmail.com) - https://github.com/1grzyb1/aoc-slack")
             .build()
         val result: Mono<LeaderBoard> = client.get()
             .uri("https://adventofcode.com/${year}/leaderboard/private/view/${leaderBoardId}.json")
