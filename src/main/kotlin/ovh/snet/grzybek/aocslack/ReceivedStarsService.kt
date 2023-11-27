@@ -16,6 +16,7 @@ class ReceivedStarsService(
         val newLeaderBoard = leaderboardClient.getLeaderBoard()
         val newStars = leaderBoard.findNewStars(newLeaderBoard)
         notifySlack(newStars)
+        leaderBoard = newLeaderBoard
     }
 
     fun notifySlack(stars: List<LeaderBoard.Star>) {
