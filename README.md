@@ -44,4 +44,5 @@ docker run -e AOC_SLACK_LEADERBOARD_ID=<leaderboard_id> \
 | AOC_SLACK_WEBHOOK_URL _(required)_    | URL to slack app webhook                                                                          |
 | AOC_SLACK_YEAR                        | Year for which bot should work (_default current year_)                                           |
 | AOC_SLACK_STARS_CRON                  | Cron how often new stars should be refreshed (_default every 15min. Minimum approved by aoc API_) |
-| AOC_SLACK_LEADERBOARD_CRON            | Cron how when leaderboard should be sent (_default midnight EST (UTC-5)_)     |
+| AOC_SLACK_LEADERBOARD_CRON            | Cron how when leaderboard should be sent (_default midnight EST (UTC-5)_)                         |
+| AOC_SLACK_ONLY_ACTIVE_USERS           | Shows only users with any points on leaderboard (_default False_)                                 |
