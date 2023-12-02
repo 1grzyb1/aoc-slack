@@ -1,0 +1,45 @@
+{
+  "members": {
+    "1496839": {
+      "stars": 4,
+      "completion_day_level": {
+        "1": {
+          "1": {
+            "star_index": 15430,
+            "get_star_ts": 1701421042
+          },
+          "2": {
+            "get_star_ts": 1701423092,
+            "star_index": 23611
+          }
+        },
+        "2": {
+          "1": {
+            "star_index": 296535,
+            "get_star_ts": 1701509568
+          },
+          "2": {
+            "get_star_ts": 1701510837,
+            "star_index": 301764
+          }
+        }
+      },
+      "global_score": 0,
+      "name": "Grzybek",
+      "id": 1496839,
+      "local_score": 69,
+      "last_star_ts": 1701510837
+    },
+    "3527679": {
+      "local_score": 0,
+      "id": 3527679,
+      "last_star_ts": 0,
+      "stars": 0,
+      "completion_day_level": {},
+      "global_score": 0,
+      "name": null
+    }
+  },
+  "owner_id": 1496839,
+  "event": "2023"
+}

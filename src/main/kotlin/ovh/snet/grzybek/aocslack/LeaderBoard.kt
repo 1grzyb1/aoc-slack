@@ -25,7 +25,7 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
             starsMap.forEach { (star, _) ->
                 val oldLevel = oldMember.completionDayLevel[day]?.get(star)
                 if (oldLevel == null) {
-                    newStars.add(Star(oldMember.name, day.toInt(), star.toInt()))
+                    newStars.add(Star(oldMember.getMemberName(), day.toInt(), star.toInt()))
                 }
             }
         }
@@ -37,7 +37,8 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
     }
 
     data class Member(
-        val name: String,
+        val name: String?,
+        val id: Int,
         val stars: Int,
         @JsonProperty("local_score")
         val localScore: Int,
@@ -47,8 +48,17 @@ data class LeaderBoard(val ownerId: Int, val event: String, val members: Map<Str
         @JsonProperty("completion_day_level")
         val completionDayLevel: Map<String, Map<String, Level>> = mapOf()
     ) {
+
+        @JsonIgnoreProperties
+        fun getMemberName(): String {
+            if (name != null) {
+                return name
+            }
+            return "Anonymous user #${id}"
+        }
+
         fun getMessage(place: Int): String {
-            return "${place}) *${name}* ${localScore}\n"
+            return "${place}) *${getMemberName()}* ${localScore}\n"
         }
 
 

@@ -73,7 +73,7 @@ class LeaderBoardTest {
         name: String,
         completionDayLevel: Map<String, Map<String, LeaderBoard.Member.Level>>
     ): LeaderBoard.Member {
-        return LeaderBoard.Member(name, 1, 1, 1, 1, completionDayLevel)
+        return LeaderBoard.Member(name, 1,1, 1, 1, 1, completionDayLevel)
     }
 
     fun createLevel(): LeaderBoard.Member.Level {
