@@ -35,6 +35,8 @@ docker run -e AOC_SLACK_LEADERBOARD_ID=<leaderboard_id> \
            1grzyb1/aoc-slack:latest
 ```
 
+or use example `docker-compose.yml`. Pass there your variables and just run `docker-compose up -d`
+
 #### Properties description
 
 | Property                              | Description                                                                                       |

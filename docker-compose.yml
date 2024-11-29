@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  aoc-slack:
+    image: 1grzyb1/aoc-slack:latest
+    container_name: aoc-slack
+    environment:
+      - AOC_SLACK_LEADERBOARD_ID={LEADERBOARD_ID}
+      - AOC_SLACK_SESSION={AOC_SESSION}
+      - AOC_SLACK_WEBHOOK_URL={SLACK_WEBHOOK_URL}
+    network_mode: host
+    restart: always
