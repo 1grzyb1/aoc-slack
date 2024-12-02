@@ -1,5 +1,6 @@
 package ovh.snet.grzybek.aocslack
 
+import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
@@ -13,8 +14,10 @@ class LeaderBoardService(
     private val useStars: Boolean,
 ) {
 
+    private val logger = KotlinLogging.logger {}
     @Scheduled(cron = "\${aoc.slack.leaderboard.cron:0 0 5 * * ?}")
     fun notifyCurrentLeaderBoard() {
+        logger.info { "Notifying about current leaderboard" }
         val newLeaderBoard = leaderboardClient.getLeaderBoard()
         var ranking =
             if (useStars) newLeaderBoard.getMembersSortedByLocalStore()

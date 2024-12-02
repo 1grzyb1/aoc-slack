@@ -39,13 +39,24 @@ or use example `docker-compose.yml`. Pass there your variables and just run `doc
 
 #### Properties description
 
-| Property                              | Description                                                                                       |
-|---------------------------------------|---------------------------------------------------------------------------------------------------|
-| AOC_SLACK_LEADERBOARD_ID _(required)_ | ID of your private leaderboard in advent of code                                                  |
-| AOC_SLACK_SESSION _(required)_        | Session header from aoc website                                                                   |
-| AOC_SLACK_WEBHOOK_URL _(required)_    | URL to slack app webhook                                                                          |
-| AOC_SLACK_YEAR                        | Year for which bot should work (_default current year_)                                           |
-| AOC_SLACK_STARS_CRON                  | Cron how often new stars should be refreshed (_default every 15min. Minimum approved by aoc API_) |
-| AOC_SLACK_LEADERBOARD_CRON            | Cron how when leaderboard should be sent (_default midnight EST (UTC-5)_)                         |
-| AOC_SLACK_ONLY_ACTIVE_USERS           | Shows only users with any points on leaderboard (_default False_)                                 |
-| AOC_SLACK_USE_STARS                   | If set to true bot will send leaderboard with stars instead of local score (_default False_)      |
+##### **Required Parameters**
+
+| Property                              | Description                                      |
+|---------------------------------------|--------------------------------------------------|
+| AOC_SLACK_LEADERBOARD_ID _(required)_ | ID of your private leaderboard in Advent of Code |
+| AOC_SLACK_SESSION _(required)_        | Session header from Advent of Code website       |
+| AOC_SLACK_WEBHOOK_URL _(required)_    | URL to Slack app webhook                         |
+
+---
+
+##### **Optional Parameters**
+
+| Property                    | Description                                                             | Default Value        |
+|-----------------------------|-------------------------------------------------------------------------|----------------------|
+| AOC_SLACK_YEAR              | Year for which bot should work                                          | Current year         |
+| AOC_SLACK_STARS_CRON        | Cron schedule for refreshing new stars                                  | Every 15 minutes     |
+| AOC_SLACK_LEADERBOARD_CRON  | Cron schedule for sending the leaderboard                               | Midnight EST (UTC-5) |
+| AOC_SLACK_ONLY_ACTIVE_USERS | Shows only users with points on the leaderboard                         | False                |
+| AOC_SLACK_USE_STARS         | Sends leaderboard with stars instead of local score if set to true      | False                |
+| AOC_SLACK_MAX_RETRIES       | Maximum number of retries for the Advent of Code API                    | 3                    |
+| AOC_SLACK_MIN_BACKOFF       | Minimum backoff duration for the first retry call to Advent of Code API | 5s                   |

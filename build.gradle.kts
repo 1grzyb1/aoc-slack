@@ -25,6 +25,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-webflux:3.1.5")
     implementation("com.slack.api:bolt-jetty:1.35.0")
+    implementation("io.github.oshai:kotlin-logging-jvm:7.0.0")
     testImplementation("org.assertj:assertj-core:3.24.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
